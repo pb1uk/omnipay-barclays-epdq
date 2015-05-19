@@ -106,6 +106,11 @@ class EssentialGateway extends AbstractGateway
         return $this->getParameter('exceptionUrl');
     }
 
+    public function getCancelUrl()
+    {
+        return $this->getParameter('cancelUrl');
+    }
+
     public function setReturnUrl($value)
     {
         $this->setParameter('returnUrl', $value);
@@ -113,6 +118,11 @@ class EssentialGateway extends AbstractGateway
         $this->setParameter('exceptionUrl', $value);
 
         return $this;
+    }
+
+    public function setCancelUrl($value)
+    {
+        return $this->setParameter('cancelUrl', $value);
     }
 
     public function getLanguage()
@@ -124,4 +134,85 @@ class EssentialGateway extends AbstractGateway
     {
         return $this->setParameter('language', $value);
     }
+
+    public function getTitle()
+    {
+        return $this->getParameter('title');
+    }
+
+    public function setTitle($value)
+    {
+        return $this->setParameter('title', $value);
+    }
+
+    public function getButtonTxtColor()
+    {
+        return $this->getParameter('buttonTxtColor');
+    }
+
+    public function setButtonTxtColor($value)
+    {
+        return $this->setParameter('buttonTxtColor', $value);
+    }
+
+    public function getButtonBgColor()
+    {
+        return $this->getParameter('buttonBgColor');
+    }
+
+    public function setButtonBgColor($value)
+    {
+        return $this->setParameter('buttonBgColor', $value);
+    }
+
+    public function getBgColor()
+    {
+        return $this->getParameter('bgColor');
+    }
+
+    public function setBgColor($value)
+    {
+        return $this->setParameter('bgColor', $value);
+    }
+
+    public function getTblTxtColor()
+    {
+        return $this->getParameter('tblTxtColor');
+    }
+
+    public function setTblTxtColor($value)
+    {
+        return $this->setParameter('tblTxtColor', $value);
+    }
+
+    public function getTxtColor()
+    {
+        return $this->getParameter('txtColor');
+    }
+
+    public function setTxtColor($value)
+    {
+        return $this->setParameter('txtColor', $value);
+    }
+
+    public function getTblBgColor()
+    {
+        return $this->getParameter('tblBgColor');
+    }
+
+    public function setTblBgColor($value)
+    {
+        return $this->setParameter('tblBgColor', $value);
+    }
+
+    public function getFontType()
+    {
+        return $this->getParameter('fontType');
+    }
+
+    public function setFontType($value)
+    {
+        return $this->setParameter('fontType', $value);
+    }
+    
 }
