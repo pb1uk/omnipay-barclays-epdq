@@ -1,5 +1,5 @@
 {
-    "name": "samvaughton/omnipay-barclays-epdq",
+    "name": "pb1uk/omnipay-barclays-epdq",
     "type": "library",
     "description": "Barclays ePDQ driver for the Omnipay payment processing library.",
     "keywords": [
@@ -11,7 +11,7 @@
         "barclays",
         "epdq"
     ],
-    "homepage": "https://github.com/samvaughton/omnipay-barclays-epdq",
+    "homepage": "https://github.com/pb1uk/omnipay-barclays-epdq",
     "license": "MIT",
     "authors": [
         {
@@ -21,6 +21,10 @@
         {
             "name": "Sam Vaughton",
             "email": "samvaughton@gmail.com"
+        },
+        {
+            "name": "Peter Briers",
+            "email": "peterbriers@hotmail.co.uk"
         },
         {
             "name": "Omnipay Contributors",
