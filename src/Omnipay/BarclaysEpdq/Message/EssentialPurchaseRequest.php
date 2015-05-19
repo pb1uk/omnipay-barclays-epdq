@@ -189,13 +189,13 @@ class EssentialPurchaseRequest extends AbstractRequest
 
         $card = $this->getCard();
         if ($card) {
-            $data['CN']              = $card->getName();
-            $data['COM']             = $card->getCompany();
-            $data['EMAIL']           = $card->getEmail();
-            $data['OWNERZIP']        = $card->getPostcode();
-            $data['OWNERTOWN']       = $card->getCity();
+            $data['CN']              = $this->cleanString( $card->getName() );
+            $data['COM']             = $this->cleanString( $card->getCompany() );
+            $data['EMAIL']           = $this->cleanString( $card->getEmail() );
+            $data['OWNERZIP']        = $this->cleanString( $card->getPostcode() );
+            $data['OWNERTOWN']       = $this->cleanString( $card->getCity() );
             $data['OWNERTELNO']      = $card->getPhone();
-            $data['OWNERADDRESS']    = $card->getAddress1();
+            $data['OWNERADDRESS']    = $this->cleanString( $card->getAddress1() );
         }
 
         $data['BUTTONTXTCOLOR'] = $this->getButtonTxtColor();
@@ -259,5 +259,13 @@ class EssentialPurchaseRequest extends AbstractRequest
     public function getEndpoint()
     {
         return $this->getTestMode() ? $this->testEndpoint : $this->liveEndpoint;
+    }
+
+    public function cleanString($str)
+    {
+        $clean = iconv('UTF-8', 'ASCII//TRANSLIT', $str);
+        $clean = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $clean);
+
+        return $clean;
     }
 }
