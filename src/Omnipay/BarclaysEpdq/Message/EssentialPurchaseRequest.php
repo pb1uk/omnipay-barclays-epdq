@@ -169,6 +169,11 @@ class EssentialPurchaseRequest extends AbstractRequest
         return $this->setParameter('callbackMethod', $value);
     }
 
+    public function getPaymentMethod()
+    {
+        return $this->getParameter('paymentMethod');
+    }
+
     public function getData()
     {
         $this->validate('amount', 'clientId', 'currency', 'language');
@@ -187,11 +192,23 @@ class EssentialPurchaseRequest extends AbstractRequest
         $data['DECLINEURL']     = $this->getDeclineUrl();
         $data['EXCEPTIONURL']   = $this->getExceptionUrl();
 
+        $detect = new \Mobile_Detect;
+
+        if( $detect->isMobile() )
+        {
+            $data['DEVICE'] = 'MOBILE';
+        }
+
+        if( $this->getPaymentMethod() == 'paypal' )
+        {
+            $data['PM'] = 'PAYPAL';
+        }
+
         $card = $this->getCard();
         if ($card) {
             $data['CN']              = $this->cleanString( $card->getName() );
             $data['COM']             = $this->cleanString( $card->getCompany() );
-            $data['EMAIL']           = $this->cleanString( $card->getEmail() );
+            $data['EMAIL']           = $card->getEmail();
             $data['OWNERZIP']        = $this->cleanString( $card->getPostcode() );
             $data['OWNERTOWN']       = $this->cleanString( $card->getCity() );
             $data['OWNERTELNO']      = $card->getPhone();
